@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Mallidi Yaswanth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Dropdown hover styles */
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            background: #0d1117;
+            border: 1px solid rgba(0,225,255,0.15);
+            border-radius: 10px;
+            padding: 8px 0;
+            min-width: 170px;
+            margin-top: 0;
+        }
+        .dropdown-item {
+            color: #ccc;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .dropdown-item:hover {
+            background: rgba(0,225,255,0.08);
+            color: #00e1ff;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+   <!-- ===== NAVBAR CODE (USE THIS IN ALL HTML FILES) ===== -->
+
+ <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand logo" href="#">Yaswanth.</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="/">Profile</a></li>
+ 
+                    <!-- About dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/about" id="aboutDropdown" role="button">About</a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="/about#education"><i class="fa-solid fa-graduation-cap me-2" style="color:#00e1ff;"></i>Education</a></li>
+                            <li><a class="dropdown-item" href="/about#skills"><i class="fa-solid fa-code me-2" style="color:#00e1ff;"></i>Skills</a></li>
+                            <li><a class="dropdown-item" href="/about#internship"><i class="fa-solid fa-briefcase me-2" style="color:#00e1ff;"></i>Internship</a></li>
+                            <li><a class="dropdown-item" href="/about#certification"><i class="fa-solid fa-certificate me-2" style="color:#00e1ff;"></i>Certification</a></li>
+                        </ul>
+                    </li>
+ 
+                    <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/achievements">Achievements</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="projects-section">
+        <div class="container">
+            <h2 class="heading text-center mb-2">My <span>Projects</span></h2>
+            <p class="projects-subtitle text-center mb-5">A showcase of real-world applications I've built.</p>
+
+
+    <!-- ===== PROJECTS SECTION ===== -->
+   <div class="project-block" id="project-spam">
+                <div class="row align-items-center g-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="project-info">
+                            <div class="project-number">01</div>
+                            <h3 class="project-title">Gmail Spam Detector</h3>
+                            <p class="project-desc">
+                                An intelligent email spam classification system that integrates directly with
+                                <strong>Gmail via OAuth2</strong> and uses a trained <strong>NLP machine learning
+                                model</strong> to detect and flag spam, phishing, and malicious emails in real-time.
+                                Built with a clean web interface, it scans the inbox and provides detailed
+                                threat analysis for each flagged message.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag"><i class="fa-brands fa-python"></i> Python</span>
+                                <span class="tech-tag"><i class="fa-solid fa-envelope"></i> Gmail API</span>
+                                <span class="tech-tag"><i class="fa-solid fa-brain"></i> NLP / ML</span>
+                                <span class="tech-tag"><i class="fa-solid fa-shield-halved"></i> OAuth2</span>
+                                <span class="tech-tag"><i class="fa-solid fa-flask"></i> Flask</span>
+                                <span class="tech-tag"><i class="fa-solid fa-filter"></i> Spam Classification</span>
+                            </div>
+                            <div class="project-highlights">
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Real Gmail inbox integration</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> NLP-powered threat classification</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Phishing & malware link detection</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Confidence score per email</div>
+                            </div>
+                            <div class="project-links mt-4">
+                                <a href="https://github.com/yaswanth-004" target="_blank" class="btn-project-primary">
+                                    <i class="fa-brands fa-github"></i> View on GitHub
+                                </a>
+                                <span class="project-status-badge status-completed">
+                                    <i class="fa-solid fa-circle-check"></i> Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===== PROJECT 2: SAST Tool ===== -->
+            <div class="project-block" id="project-sast">
+                <div class="row align-items-center g-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="project-info">
+                            <div class="project-number">02</div>
+                            <h3 class="project-title">Java SAST Security Analyzer</h3>
+                            <p class="project-desc">
+                                A <strong>Static Application Security Testing (SAST)</strong> tool that scans Java
+                                source code for real vulnerabilities using AST parsing and AI-powered analysis.
+                                Combines a custom <strong>JavaParser</strong> engine with <strong>Google Gemini AI</strong>
+                                to detect hardcoded secrets, SQL injections, insecure storage, dangerous API calls,
+                                and credential leaks — all mapped to CWE IDs with actionable solutions.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag"><i class="fa-brands fa-java"></i> Java</span>
+                                <span class="tech-tag"><i class="fa-solid fa-tree"></i> JavaParser / AST</span>
+                                <span class="tech-tag"><i class="fa-brands fa-python"></i> Python</span>
+                                <span class="tech-tag"><i class="fa-solid fa-robot"></i> Google Gemini AI</span>
+                                <span class="tech-tag"><i class="fa-solid fa-magnifying-glass-chart"></i> Taint Analysis</span>
+                                <span class="tech-tag"><i class="fa-solid fa-bug"></i> CWE Mapping</span>
+                            </div>
+                            <div class="project-highlights">
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Detects CWE-89, CWE-798, CWE-78, CWE-502 & more</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Credential Tracer with Taint Analysis</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> AI-Enhanced Vulnerability Reports (JSON)</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Scans entire directories automatically</div>
+                            </div>
+                            <div class="project-links mt-4">
+                                <a href="https://github.com/yaswanth-004" target="_blank" class="btn-project-primary">
+                                    <i class="fa-brands fa-github"></i> View on GitHub
+                                </a>
+                                <span class="project-status-badge status-completed">
+                                    <i class="fa-solid fa-circle-check"></i> Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- ===== PROJECT 3: Smart Traffic ===== -->
+            <div class="project-block" id="project-traffic">
+                <div class="row align-items-center g-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="project-info">
+                            <div class="project-number">03</div>
+                            <h3 class="project-title">Smart Traffic Management System</h3>
+                            <p class="project-desc">
+                                An AI-powered <strong>smart traffic management system</strong> that uses real-time
+                                computer vision to detect vehicle density and dynamically adjust signal timings.
+                                The system reduces congestion at intersections by processing live camera feeds,
+                                classifying vehicle types, and optimizing green-light durations using
+                                <strong>YOLO object detection</strong> and a custom adaptive algorithm.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag"><i class="fa-brands fa-python"></i> Python</span>
+                                <span class="tech-tag"><i class="fa-solid fa-eye"></i> YOLO / OpenCV</span>
+                                <span class="tech-tag"><i class="fa-solid fa-brain"></i> Computer Vision</span>
+                                <span class="tech-tag"><i class="fa-solid fa-traffic-light"></i> Adaptive Signals</span>
+                                <span class="tech-tag"><i class="fa-solid fa-microchip"></i> Real-time AI</span>
+                            </div>
+                            <div class="project-highlights">
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Real-time vehicle density detection</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Dynamic signal time adjustment</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Multi-lane intersection support</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Emergency vehicle priority logic</div>
+                            </div>
+                            <div class="project-links mt-4">
+                                <a href="https://github.com/yaswanth-004" target="_blank" class="btn-project-primary">
+                                    <i class="fa-brands fa-github"></i> View on GitHub
+                                </a>
+                                <span class="project-status-badge status-completed">
+                                    <i class="fa-solid fa-circle-check"></i> Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- ===== PROJECT 4: Carbon Analysis ===== -->
+            <div class="project-block" id="project-carbon">
+                <div class="row align-items-center g-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="project-info">
+                            <div class="project-number">04</div>
+                            <h3 class="project-title">Carbon Footprint Analyzer</h3>
+                            <p class="project-desc">
+                                A data-driven web application that calculates, visualizes, and analyzes an
+                                individual's or organization's <strong>carbon footprint</strong> using AI-powered
+                                insights. Users input their energy usage, travel, and lifestyle habits — and the
+                                system generates personalized reduction strategies backed by ML models and rich
+                                interactive charts.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag"><i class="fa-brands fa-python"></i> Python</span>
+                                <span class="tech-tag"><i class="fa-solid fa-chart-line"></i> Data Analytics</span>
+                                <span class="tech-tag"><i class="fa-solid fa-brain"></i> ML / AI</span>
+                                <span class="tech-tag"><i class="fa-solid fa-flask"></i> Flask</span>
+                                <span class="tech-tag"><i class="fa-solid fa-chart-bar"></i> Plotly / Chart.js</span>
+                                <span class="tech-tag"><i class="fa-solid fa-seedling"></i> Eco Analytics</span>
+                            </div>
+                            <div class="project-highlights">
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> AI-generated reduction recommendations</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Interactive visual dashboards</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Industry benchmarking comparisons</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Exportable detailed PDF reports</div>
+                            </div>
+                            <div class="project-links mt-4">
+                                <a href="https://github.com/yaswanth-004" target="_blank" class="btn-project-primary">
+                                    <i class="fa-brands fa-github"></i> View on GitHub
+                                </a>
+                                <span class="project-status-badge status-completed">
+                                    <i class="fa-solid fa-circle-check"></i> Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- ===== PROJECT 5: Spam Gmail Detector ===== -->
+            
+            <div class="project-block" id="project-ecommerce">
+                <div class="project-featured-badge"><i class="fa-solid fa-star"></i> Featured Project</div>
+                <div class="row align-items-center g-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="project-info">
+                            <div class="project-number">05</div>
+                            <h3 class="project-title">Full-Stack E-Commerce Platform</h3>
+                            <p class="project-desc">
+                                A production-ready, enterprise-grade e-commerce application built entirely in Java using
+                                <strong>Spring MVC</strong>, <strong>Spring Boot</strong>, <strong>JPA/Hibernate</strong>,
+                                and the <strong>DAO pattern</strong>. Features a full REST API backend, secure user
+                                authentication, product catalog management, cart & order processing, and an admin
+                                dashboard — all wired together with clean layered architecture.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tech-tag"><i class="fa-brands fa-java"></i> Java</span>
+                                <span class="tech-tag"><i class="fa-solid fa-leaf"></i> Spring Boot</span>
+                                <span class="tech-tag"><i class="fa-solid fa-layer-group"></i> Spring MVC</span>
+                                <span class="tech-tag"><i class="fa-solid fa-database"></i> JPA / Hibernate</span>
+                                <span class="tech-tag"><i class="fa-solid fa-code-branch"></i> DAO Pattern</span>
+                                <span class="tech-tag"><i class="fa-solid fa-plug"></i> REST API</span>
+                                <span class="tech-tag"><i class="fa-solid fa-database"></i> MySQL</span>
+                                <span class="tech-tag"><i class="fa-solid fa-shield-halved"></i> Spring Security</span>
+                            </div>
+                            <div class="project-highlights">
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Secure JWT Authentication</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Full CRUD REST API Endpoints</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Order Management System</div>
+                                <div class="highlight-item"><i class="fa-solid fa-check-circle"></i> Admin Dashboard Panel</div>
+                            </div>
+                            <div class="project-links mt-4">
+                                <a href="https://github.com/yaswanth-004" target="_blank" class="btn-project-primary">
+                                    <i class="fa-brands fa-github"></i> View on GitHub
+                                </a>
+                                <span class="project-status-badge status-completed">
+                                    <i class="fa-solid fa-circle-check"></i> Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+        </div>
+    </section>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.project-block').forEach(block => observer.observe(block));
+    </script>
+</body>
+</html>
+ 

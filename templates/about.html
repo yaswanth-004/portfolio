@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Mallidi Yaswanth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* ---------- Dropdown ---------- */
+        .nav-item.dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu {
+            background: #0d1117;
+            border: 1px solid rgba(0,225,255,0.15);
+            border-radius: 10px;
+            padding: 8px 0;
+            min-width: 175px;
+            margin-top: 0;
+        }
+        .dropdown-item { color: #ccc; padding: 8px 20px; font-size: 0.9rem; transition: all 0.2s; }
+        .dropdown-item:hover { background: rgba(0,225,255,0.08); color: #00e1ff; }
+        .dropdown-toggle::after { display: none; }
+
+        /* ---------- Smooth scroll offset for fixed navbar ---------- */
+        html { scroll-behavior: smooth; }
+        .scroll-anchor {
+            display: block;
+            height: 90px;
+            margin-top: -90px;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand logo" href="/">Yaswanth.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Profile</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="/about" id="aboutDropdown" role="button">About</a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="#education"><i class="fa-solid fa-graduation-cap me-2" style="color:#00e1ff;"></i>Education</a></li>
+                            <li><a class="dropdown-item" href="#skills"><i class="fa-solid fa-code me-2" style="color:#00e1ff;"></i>Skills</a></li>
+                            <li><a class="dropdown-item" href="#internship"><i class="fa-solid fa-briefcase me-2" style="color:#00e1ff;"></i>Internship</a></li>
+                            <li><a class="dropdown-item" href="#certification"><i class="fa-solid fa-certificate me-2" style="color:#00e1ff;"></i>Certification</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/achievements">Achievements</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================================================================
+         ABOUT / PERSONAL INFO
+    ================================================================ -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="heading text-center mb-5">About <span>Me</span></h2>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="custom-card p-4 rounded shadow">
+                        <h3 class="mb-4" style="color: var(--main-color);">Personal Info</h3>
+                        <p><strong><i class="fa-solid fa-user"></i> Full Name:</strong><br>Mallidi Yaswanth</p>
+                        <p><strong><i class="fa-solid fa-person"></i> Gender:</strong><br>Male</p>
+                        <p><strong><i class="fa-solid fa-location-dot"></i> Current Address:</strong><br>Avvai Nagar, Padi, Chennai – 600050</p>
+                        <hr style="border-color: #555;">
+                        <p>
+                            <strong>Summary:</strong><br>
+                            I am a Full Stack Developer focused on building scalable, secure, and high-performance
+                            applications using modern technologies and best development practices. I specialize in
+                            secure backend architecture, cybersecurity-focused development, REST API integration,
+                            AI-powered solutions, and seamless applications with strong attention to performance,
+                            maintainability, and vulnerability prevention.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ===================== EDUCATION ===================== -->
+                <div class="col-lg-8">
+                    <span class="scroll-anchor" id="education"></span>
+                    <h3 class="mb-4" style="color: var(--main-color);">
+                        <i class="fa-solid fa-graduation-cap"></i> Education Journey
+                    </h3>
+
+                    <div class="custom-card p-4 rounded shadow mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h4>B.E. CSE (Cyber Security)</h4>
+                            <span class="badge bg-custom-highlight text-dark">Batch Topper</span>
+                        </div>
+                        <h5>RMK College of Engineering and Technology, Thiruvallur</h5>
+                        <p class="text-muted"><i class="fa-regular fa-calendar"></i> 2022 – 2026</p>
+                        <p><strong>Roll No:</strong> 111622108036</p>
+                        <p class="mb-0"><strong>Score:</strong> 84.5% &nbsp;|&nbsp; CGPA: 8.45</p>
+                    </div>
+
+                    <div class="custom-card p-4 rounded shadow mb-4">
+                        <h4>Class XII (Intermediate)</h4>
+                        <h5>Narayana Junior College</h5>
+                        <p class="text-muted"><i class="fa-regular fa-calendar"></i> 2020 – 2022 &nbsp;|&nbsp; Full Time</p>
+                        <p><strong>Board:</strong> Andhra Pradesh Board of Intermediate Education (BIEAP)</p>
+                        <p class="mb-0"><strong>Score:</strong> 84%</p>
+                    </div>
+
+                    <div class="custom-card p-4 rounded shadow mb-4">
+                        <h4>Class X (SSC)</h4>
+                        <h5>Narayana EM High School</h5>
+                        <p class="text-muted"><i class="fa-regular fa-calendar"></i> 2019 – 2020 &nbsp;|&nbsp; Full Time</p>
+                        <p><strong>Board:</strong> Andhra Pradesh Board of Secondary Education (BSEAP)</p>
+                        <p class="mb-0"><strong>Score:</strong> 96%</p>
+                    </div>
+
+                    <!-- Honor Degree in AI & ML -->
+                    <div class="custom-card p-4 rounded shadow mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h4>Honor Degree – AI &amp; Machine Learning</h4>
+                            <span class="badge bg-custom-highlight text-dark">9.0 CGPA</span>
+                        </div>
+                        <h5>RMK College of Engineering and Technology</h5>
+                        <p class="text-muted"><i class="fa-regular fa-calendar"></i> 2022 – 2026</p>
+                        <p class="mb-0">
+                            Completed the Honor Degree program in Artificial Intelligence and Machine Learning
+                            with a CGPA of <strong>9.0</strong>, demonstrating exceptional commitment to
+                            advanced coursework beyond the core curriculum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         SKILLS
+    ================================================================ -->
+    <span class="scroll-anchor" id="skills"></span>
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="heading text-center mb-2">My <span>Skills</span></h2>
+            <p class="skills-subtitle text-center mb-5">Technologies and tools I work with</p>
+
+            <!-- Programming Languages -->
+            <div class="skill-category-block mb-5">
+                <h4 class="skill-category-title"><i class="fa-solid fa-code"></i> Programming Languages</h4>
+                <div class="row g-3 mt-2">
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-brands fa-java skill-icon" style="color:#f89820;"></i>
+                            <span>Java SE 17</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-brands fa-python skill-icon" style="color:#3776ab;"></i>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                   
+                    
+                </div>
+            </div>
+
+            <!-- Operating Systems -->
+            <div class="skill-category-block mb-5">
+                <h4 class="skill-category-title"><i class="fa-solid fa-desktop"></i> Operating Systems</h4>
+                <div class="row g-3 mt-2">
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-brands fa-linux skill-icon" style="color:#fcc624;"></i>
+                            <span>Linux</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-brands fa-windows skill-icon" style="color:#00adef;"></i>
+                            <span>Windows</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="skill-category-block mb-5">
+                <h4 class="skill-category-title"><i class="fa-solid fa-database"></i> Databases</h4>
+                <div class="row g-3 mt-2">
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-database skill-icon" style="color:#00618a;"></i>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-leaf skill-icon" style="color:#4db33d;"></i>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & DevOps -->
+            <div class="skill-category-block mb-5">
+                <h4 class="skill-category-title"><i class="fa-solid fa-wrench"></i> Tools &amp; DevOps</h4>
+                <div class="row g-3 mt-2">
+                    
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-brands fa-github skill-icon"></i>
+                            <span>GitHub</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-brands fa-docker skill-icon" style="color:#2496ed;"></i>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-brands fa-aws skill-icon" style="color:#ff9900;"></i>
+                            <span>AWS Cloud</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-cubes skill-icon" style="color:#7b42bc;"></i>
+                            <span>Terraform</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-infinity skill-icon" style="color:#d33833;"></i>
+                            <span>Jenkins</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Java Web Frameworks -->
+            <div class="skill-category-block mb-5">
+                <h4 class="skill-category-title"><i class="fa-brands fa-java"></i> Java web frameworks</h4>
+                <div class="row g-3 mt-2">
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-layer-group skill-icon" style="color:#6db33f;"></i>
+                            <span>Spring MVC</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-bolt skill-icon" style="color:#6db33f;"></i>
+                            <span>Spring Boot</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-shield-halved skill-icon" style="color:#6db33f;"></i>
+                            <span>Spring Security</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-table-columns skill-icon" style="color:#6db33f;"></i>
+                            <span>JPA</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-sitemap skill-icon" style="color:#6db33f;"></i>
+                            <span>DAO Pattern</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-plug skill-icon" style="color:#6db33f;"></i>
+                            <span>REST API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ORM -->
+            <div class="skill-category-block mb-5">
+                <h4 class="skill-category-title"><i class="fa-solid fa-link"></i> ORM</h4>
+                <div class="row g-3 mt-2">
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-database skill-icon" style="color:#bcae79;"></i>
+                            <span>Hibernate</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-circle-nodes skill-icon" style="color:#00618a;"></i>
+                            <span>JDBC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing -->
+            <div class="skill-category-block mb-5">
+                <h4 class="skill-category-title"><i class="fa-solid fa-vial"></i> Testing</h4>
+                <div class="row g-3 mt-2">
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-flask-vial skill-icon" style="color:#25a162;"></i>
+                            <span>JUnit Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Frameworks -->
+            <div class="skill-category-block mb-5">
+                <h4 class="skill-category-title"><i class="fa-solid fa-globe"></i> Web Frameworks</h4>
+                <div class="row g-3 mt-2">
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-solid fa-flask skill-icon" style="color:#aaa;"></i>
+                            <span>Flask</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="skill-card">
+                            <i class="fa-brands fa-react skill-icon" style="color:#61dafb;"></i>
+                            <span>React</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         INTERNSHIP
+    ================================================================ -->
+    <span class="scroll-anchor" id="internship"></span>
+    <section class="internship-section">
+        <div class="container">
+            <h2 class="heading text-center mb-2">Internship <span>Experience</span></h2>
+            <p class="skills-subtitle text-center mb-5">Real-world experience through hands-on internships</p>
+
+            <!-- Eisystem -->
+            <div class="internship-block mb-4">
+                <div class="row align-items-start g-4">
+                    <div class="col-lg-1 d-none d-lg-flex justify-content-center">
+                        <div class="internship-icon"><i class="fa-brands fa-java"></i></div>
+                    </div>
+                    <div class="col-lg-11">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                            <h4 class="internship-company">Eisystem — Java Full Stack Internship</h4>
+                            <span class="internship-badge"><i class="fa-regular fa-clock"></i> 8 Weeks</span>
+                        </div>
+                        <p class="internship-desc">
+                            Completed an 8-week Java Full Stack internship where I gained hands-on experience with the
+                            <strong>Spring Framework</strong>. Built a fully functional <strong>School Management Application</strong>
+                            in Java — implementing features like student enrollment, attendance, and grade management using
+                            Spring MVC, JPA/Hibernate, and MySQL.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fa-brands fa-java"></i> Java</span>
+                            <span class="tech-tag"><i class="fa-solid fa-leaf"></i> Spring Framework</span>
+                            <span class="tech-tag"><i class="fa-solid fa-layer-group"></i> Spring MVC</span>
+                            <span class="tech-tag"><i class="fa-solid fa-database"></i> MySQL</span>
+                            <span class="tech-tag"><i class="fa-solid fa-school"></i> School Application</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gradtwin -->
+            <div class="internship-block mb-4">
+                <div class="row align-items-start g-4">
+                    <div class="col-lg-1 d-none d-lg-flex justify-content-center">
+                        <div class="internship-icon" style="color: var(--main-color);"><i class="fa-brands fa-python"></i></div>
+                    </div>
+                    <div class="col-lg-11">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                            <h4 class="internship-company">Gradtwin Services — Python Full Stack Internship</h4>
+                            <span class="internship-badge"><i class="fa-regular fa-calendar"></i> Jan 2026 – Apr 2026</span>
+                        </div>
+                        <p class="internship-desc">
+                            Worked as a Python Full Stack Developer intern at Gradtwin Services. Built web applications
+                            using <strong>Flask</strong> and developed data analysis capabilities with core Python libraries.
+                            Gained practical experience with <strong>Pandas, NumPy, Seaborn, and Matplotlib</strong>
+                            for data processing and visualization. Also built the
+                            <strong>Carbon Footprint Analyzer</strong> project during this internship.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fa-brands fa-python"></i> Python</span>
+                            <span class="tech-tag"><i class="fa-solid fa-flask"></i> Flask</span>
+                            <span class="tech-tag"><i class="fa-solid fa-table"></i> Pandas</span>
+                            <span class="tech-tag"><i class="fa-solid fa-calculator"></i> NumPy</span>
+                            <span class="tech-tag"><i class="fa-solid fa-chart-line"></i> Seaborn</span>
+                            <span class="tech-tag"><i class="fa-solid fa-chart-bar"></i> Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Flow -->
+            <div class="internship-block mb-4">
+                <div class="row align-items-start g-4">
+                    <div class="col-lg-1 d-none d-lg-flex justify-content-center">
+                        <div class="internship-icon" style="color: #ffa500;"><i class="fa-solid fa-stream"></i></div>
+                    </div>
+                    <div class="col-lg-11">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                            <h4 class="internship-company">Main Flow Services — Python Internship</h4>
+                            <span class="internship-badge"><i class="fa-regular fa-calendar"></i> Jun 2024 – Aug 2024</span>
+                        </div>
+                        <p class="internship-desc">
+                            Completed a Python internship at Main Flow Services and Technologies Pvt. Ltd. Learned
+                            <strong>Core Python</strong> in depth — covering collections, data structures and algorithms,
+                            and programming fundamentals. Strengthened problem-solving skills through various assigned
+                            projects and tasks, demonstrating high professionalism and dedication throughout.
+                        </p>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fa-brands fa-python"></i> Core Python</span>
+                            <span class="tech-tag"><i class="fa-solid fa-layer-group"></i> Collections</span>
+                            <span class="tech-tag"><i class="fa-solid fa-diagram-project"></i> DSA</span>
+                            <span class="tech-tag"><i class="fa-solid fa-code"></i> Programming Logic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================================================================
+         CERTIFICATIONS
+    ================================================================ -->
+    <span class="scroll-anchor" id="certification"></span>
+    <section class="cert-section">
+        <div class="container">
+            <h2 class="heading text-center mb-2">My <span>Certifications</span></h2>
+            <p class="skills-subtitle text-center mb-5">Verified credentials from leading platforms</p>
+
+            <div class="row g-4">
+
+                <!-- NPTEL: Computer Networks -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge nptel-badge">NPTEL</div>
+                        <h5 class="cert-title">Computer Networks and Internet Protocol</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> Jan – Apr 2024 &nbsp;|&nbsp; 12-Week Course</p>
+                        <p class="cert-meta"><i class="fa-solid fa-percent"></i> Score: 55% &nbsp;|&nbsp; IIT Kharagpur</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">Networking</span>
+                            <span class="tech-tag">Protocols</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NPTEL: Python for Data Science -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge nptel-badge">NPTEL</div>
+                        <h5 class="cert-title">Python for Data Science</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> Jul – Aug 2024 &nbsp;|&nbsp; 4-Week Course</p>
+                        <p class="cert-meta"><i class="fa-solid fa-percent"></i> Score: 65% (Elite) &nbsp;|&nbsp; IIT Madras</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Data Science</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simplilearn: MySQL -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge scholarhat-badge">Simplilearn</div>
+                        <h5 class="cert-title">MySQL Skill Test</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> 6th May 2026</p>
+                        <p class="cert-meta"><i class="fa-solid fa-id-card"></i> Cert ID: 2ER4050526</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Databases</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simplilearn: MongoDB -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge scholarhat-badge">Simplilearn</div>
+                        <h5 class="cert-title">MongoDB Skill Test</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> 6th May 2026</p>
+                        <p class="cert-meta"><i class="fa-solid fa-id-card"></i> Cert ID: 3AR4050926</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Databases</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Udemy: Java -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge udemy-badge">Udemy</div>
+                        <h5 class="cert-title">Java Training – Complete Course for Beginners (All in One)</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> May 13, 2026 &nbsp;|&nbsp; 4 hrs</p>
+                        <p class="cert-meta"><i class="fa-solid fa-person-chalkboard"></i> Crunch Coding Institute</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Foundation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Udemy: JavaScript -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge udemy-badge">Udemy</div>
+                        <h5 class="cert-title">JavaScript – Complete Guide (Beginner + Advanced)</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> June 24, 2025 &nbsp;|&nbsp; 4 hrs</p>
+                        <p class="cert-meta"><i class="fa-solid fa-person-chalkboard"></i> Crunch Coding Institute</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Foundation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Udemy: HTML -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge udemy-badge">Udemy</div>
+                        <h5 class="cert-title">HTML – Complete Course</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> May 13, 2025 &nbsp;|&nbsp; 4 hrs</p>
+                        <p class="cert-meta"><i class="fa-solid fa-person-chalkboard"></i> Crunch Coding Institute</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">Foundation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infosys: Python -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge infosys-badge">Infosys</div>
+                        <h5 class="cert-title">Python Programming</h5>
+                        <p class="cert-meta"><i class="fa-solid fa-building"></i> Infosys Springboard</p>
+                        <p class="cert-meta"><i class="fa-solid fa-award"></i> Course Completion Certificate</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Programming</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infosys: DBMS -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge infosys-badge">Infosys</div>
+                        <h5 class="cert-title">Database Management System</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> June 22, 2023</p>
+                        <p class="cert-meta"><i class="fa-solid fa-building"></i> Infosys Springboard</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">DBMS</span>
+                            <span class="tech-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOEFL ITP -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="cert-card">
+                        <div class="cert-issuer-badge" style="background:#1a4fa0;color:#fff;">TOEFL ITP</div>
+                        <h5 class="cert-title">TOEFL ITP – English Proficiency (Level 1)</h5>
+                        <p class="cert-meta"><i class="fa-regular fa-calendar"></i> March 21, 2025</p>
+                        <p class="cert-meta"><i class="fa-solid fa-star"></i> Total Score: <strong>510</strong> / 677</p>
+                        <p class="cert-meta"><i class="fa-solid fa-id-card"></i> Student No: 111622108036</p>
+                        <div class="cert-tags">
+                            <span class="tech-tag">English</span>
+                            <span class="tech-tag">Foreign Language</span>
+                            <span class="tech-tag">B1 / B2 CEFR</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll for all in-page anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

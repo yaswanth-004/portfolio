@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | Mallidi Yaswanth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* ---------- Dropdown ---------- */
+        .nav-item.dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu {
+            background: #0d1117;
+            border: 1px solid rgba(0,225,255,0.15);
+            border-radius: 10px;
+            padding: 8px 0;
+            min-width: 175px;
+            margin-top: 0;
+        }
+        .dropdown-item { color: #ccc; padding: 8px 20px; font-size: 0.9rem; transition: all 0.2s; }
+        .dropdown-item:hover { background: rgba(0,225,255,0.08); color: #00e1ff; }
+        .dropdown-toggle::after { display: none; }
+
+        /* ---------- Page ---------- */
+        .achievements-page { padding: 120px 0 80px; }
+
+        .page-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .page-title span { color: #00e1ff; }
+        .page-subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 60px;
+        }
+
+        /* ---------- Achievement Card ---------- */
+        .ach-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(0,225,255,0.12);
+            border-radius: 18px;
+            padding: 32px 28px;
+            height: 100%;
+            position: relative;
+            transition: all 0.35s ease;
+            overflow: hidden;
+        }
+        .ach-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, #00e1ff, #0066ff);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .ach-card:hover {
+            border-color: rgba(0,225,255,0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0,225,255,0.1);
+        }
+        .ach-card:hover::before { opacity: 1; }
+
+        .ach-icon-wrap {
+            width: 64px; height: 64px;
+            border-radius: 16px;
+            background: rgba(0,225,255,0.1);
+            border: 1px solid rgba(0,225,255,0.22);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+        }
+        .ach-icon-wrap i { color: #00e1ff; font-size: 1.6rem; }
+
+        .ach-badge {
+            display: inline-block;
+            background: rgba(0,225,255,0.08);
+            color: #00e1ff;
+            border: 1px solid rgba(0,225,255,0.25);
+            border-radius: 20px;
+            padding: 3px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .ach-badge.gold    { background: rgba(255,200,0,0.08);  color: #ffc800; border-color: rgba(255,200,0,0.3); }
+        .ach-badge.silver  { background: rgba(180,180,200,0.1); color: #b4b4c8; border-color: rgba(180,180,200,0.3); }
+        .ach-badge.blue    { background: rgba(0,102,255,0.08);  color: #4d9fff; border-color: rgba(0,102,255,0.3); }
+        .ach-badge.green   { background: rgba(0,200,100,0.08);  color: #00c864; border-color: rgba(0,200,100,0.3); }
+        .ach-badge.purple  { background: rgba(140,80,255,0.1);  color: #a87cff; border-color: rgba(140,80,255,0.3); }
+
+        .ach-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        .ach-org {
+            color: #00e1ff;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .ach-org i { margin-right: 5px; }
+        .ach-date {
+            color: #666;
+            font-size: 0.82rem;
+            margin-bottom: 14px;
+        }
+        .ach-date i { margin-right: 5px; }
+        .ach-desc {
+            color: #aaa;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .ach-detail {
+            background: rgba(0,225,255,0.05);
+            border-left: 3px solid rgba(0,225,255,0.4);
+            border-radius: 0 8px 8px 0;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #999;
+            margin-top: 14px;
+        }
+        .ach-detail strong { color: #ccc; }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid rgba(0,225,255,0.08);
+            margin: 60px 0 50px;
+        }
+        .section-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+        .section-label span { color: #00e1ff; }
+        .section-label i { margin-right: 10px; color: #00e1ff; }
+
+        /* SkillRack profile link button */
+        .profile-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,225,255,0.08);
+            border: 1px solid rgba(0,225,255,0.3);
+            color: #00e1ff;
+            border-radius: 8px;
+            padding: 7px 16px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+        .profile-link-btn:hover {
+            background: rgba(0,225,255,0.15);
+            color: #00e1ff;
+            border-color: #00e1ff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand logo" href="/">Yaswanth.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Profile</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/about" id="aboutDropdown" role="button">About</a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="/about#education"><i class="fa-solid fa-graduation-cap me-2" style="color:#00e1ff;"></i>Education</a></li>
+                            <li><a class="dropdown-item" href="/about#skills"><i class="fa-solid fa-code me-2" style="color:#00e1ff;"></i>Skills</a></li>
+                            <li><a class="dropdown-item" href="/about#internship"><i class="fa-solid fa-briefcase me-2" style="color:#00e1ff;"></i>Internship</a></li>
+                            <li><a class="dropdown-item" href="/about#certification"><i class="fa-solid fa-certificate me-2" style="color:#00e1ff;"></i>Certification</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/achievements">Achievements</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE CONTENT ===== -->
+    <section class="achievements-page">
+        <div class="container">
+
+            <h1 class="page-title">My <span>Achievements</span></h1>
+            <p class="page-subtitle">
+                A record of competitions, recognitions, certifications, and milestones earned throughout my academic journey.
+            </p>
+
+            <!-- ===================== HACKATHONS ===================== -->
+            <h5 class="section-label"><i class="fa-solid fa-laptop-code"></i>Hackathons &amp; <span>Competitions</span></h5>
+            <div class="row g-4 mb-5">
+
+                <!-- Thoothukudi District Police Hackathon 2025 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="ach-card">
+                        <div class="ach-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="ach-badge gold"><i class="fa-solid fa-trophy me-1"></i>Hackathon 2025</div>
+                        <h4>Thoothukudi District Police – Hackathon 2025</h4>
+                        <div class="ach-org"><i class="fa-solid fa-building-shield"></i>Thoothukudi District Police, Tamil Nadu</div>
+                        <div class="ach-date"><i class="fa-regular fa-calendar"></i>April 12, 2025</div>
+                        <p class="ach-desc">
+                            Received a Certificate of Appreciation from the Superintendent of Police,
+                            Thoothukudi District, for submitting a working prototype at the Cyber Hackathon 2025.
+                            Innovative ideas and dedication were specifically recognized and appreciated by the
+                            organizing authority.
+                        </p>
+                        <div class="ach-detail">
+                            <strong>Issued by:</strong> Tr. Albert John I.P.S., Superintendent of Police<br>
+                            <strong>Venue:</strong> RMKCET &nbsp;|&nbsp; <strong>Date:</strong> 12.04.2025
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCI Hackathon – RMKEC -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="ach-card">
+                        <div class="ach-icon-wrap"><i class="fa-solid fa-lightbulb"></i></div>
+                        <div class="ach-badge blue"><i class="fa-solid fa-atom me-1"></i>SCI Hackathon</div>
+                        <h4>SCI Hackathon – RMKEC AICTE Idea Lab</h4>
+                        <div class="ach-org"><i class="fa-solid fa-university"></i>R.M.K. Engineering College (RMKEC)</div>
+                        <div class="ach-date"><i class="fa-regular fa-calendar"></i>November 9, 2023</div>
+                        <p class="ach-desc">
+                            Participated in the SCI-Hackathon organized by RMKEC AICTE Idea Lab in association with
+                            the Department of Computer Science and Design. Demonstrated innovative problem-solving
+                            and rapid prototyping skills in a competitive environment.
+                        </p>
+                        <div class="ach-detail">
+                            <strong>Department:</strong> Computer Science &amp; Design<br>
+                            <strong>Year:</strong> II CSE &nbsp;|&nbsp; RMKCET
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CXO National Hackathon – Finals -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="ach-card">
+                        <div class="ach-icon-wrap"><i class="fa-solid fa-flag-checkered"></i></div>
+                        <div class="ach-badge gold"><i class="fa-solid fa-star me-1"></i>National Finalist</div>
+                        <h4>CXO-Innofest Cyber Hackathon – Finalist</h4>
+                        <div class="ach-org"><i class="fa-solid fa-globe"></i>CXO-Innofest Cyber Hackathon</div>
+                        <div class="ach-date"><i class="fa-regular fa-calendar"></i>2024</div>
+                        <p class="ach-desc">
+                            Advanced to the <strong>national finals</strong> of the CXO Hackathon — a prestigious
+                            national-level competition — demonstrating exceptional technical skills, innovation,
+                            and the ability to compete with top engineering talent across India.
+                        </p>
+                        <div class="ach-detail">
+                            <strong>Level:</strong> National Finalist &nbsp;|&nbsp;
+                            <strong>Recognition:</strong> Top Finalist
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ===================== ACADEMIC HONORS ===================== -->
+            <h5 class="section-label"><i class="fa-solid fa-graduation-cap"></i>Academic <span>Honors</span></h5>
+            <div class="row g-4 mb-5">
+
+                <!-- Honor Degree -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="ach-card">
+                        <div class="ach-icon-wrap"><i class="fa-solid fa-medal"></i></div>
+                        <div class="ach-badge gold"><i class="fa-solid fa-award me-1"></i>Honor Degree</div>
+                        <h4>Honor Degree – Artificial Intelligence &amp; Machine Learning</h4>
+                        <div class="ach-org"><i class="fa-solid fa-university"></i>RMK College of Engineering and Technology</div>
+                        <div class="ach-date"><i class="fa-regular fa-calendar"></i>2022 – 2026</div>
+                        <p class="ach-desc">
+                            Completed the Honor Degree program in Artificial Intelligence and Machine Learning
+                            with an outstanding <strong>CGPA of 9.0</strong>, reflecting consistent high performance
+                            in advanced coursework pursued beyond the core B.E. curriculum.
+                        </p>
+                        <div class="ach-detail">
+                            <strong>CGPA:</strong> 9.0 &nbsp;|&nbsp;
+                            <strong>Specialization:</strong> AI &amp; Machine Learning
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Exhibition 2023 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="ach-card">
+                        <div class="ach-icon-wrap"><i class="fa-solid fa-diagram-project"></i></div>
+                        <div class="ach-badge blue"><i class="fa-solid fa-certificate me-1"></i>Project Exhibition</div>
+                        <h4>Project Exhibition 2023 – Certificate of Participation</h4>
+                        <div class="ach-org"><i class="fa-solid fa-university"></i>R.M.K. College of Engineering and Technology, Chennai</div>
+                        <div class="ach-date"><i class="fa-regular fa-calendar"></i>2023</div>
+                        <p class="ach-desc">
+                            Participated in the inter-college Project Exhibition 2023 organized by the Department of
+                            Artificial Intelligence and Data Science at RMKCET — sponsored by
+                            <strong>Tamil Nadu State Council for Science and Technology</strong> and
+                            <strong>NCSTC, Govt. of India, New Delhi</strong>.
+                        </p>
+                        <div class="ach-detail">
+                            <strong>Dept:</strong> AI &amp; Data Science<br>
+                            <strong>Sponsors:</strong> TNSCST &amp; NCSTC, Govt. of India
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SkillRack -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="ach-card">
+                        <div class="ach-icon-wrap"><i class="fa-solid fa-code"></i></div>
+                        <div class="ach-badge green"><i class="fa-solid fa-ranking-star me-1"></i>SkillRack</div>
+                        <h4>SkillRack – Competitive Coding Profile</h4>
+                        <div class="ach-org"><i class="fa-solid fa-globe"></i>SkillRack Platform</div>
+                        <div class="ach-date"><i class="fa-regular fa-calendar"></i>Ongoing</div>
+                        <p class="ach-desc">
+                            Actively solved programming challenges, algorithm problems, and data structure exercises
+                            on SkillRack — a competitive coding platform used widely by engineering institutions in India.
+                            Demonstrates strong problem-solving ability and consistent coding practice.
+                        </p>
+                        <a href="http://www.skillrack.com/profile/406618/9ff211f112c644ff458b89cd9fc2e141d861d658"
+                           target="_blank" rel="noopener noreferrer" class="profile-link-btn">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> View SkillRack Profile
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ===================== WORKSHOPS & EVENTS ===================== -->
+            <h5 class="section-label"><i class="fa-solid fa-screwdriver-wrench"></i>Workshops &amp; <span>Events</span></h5>
+            <div class="row g-4 mb-5">
+
+                <!-- TopEngineer Workshop -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="ach-card">
+                        <div class="ach-icon-wrap"><i class="fa-solid fa-gear"></i></div>
+                        <div class="ach-badge purple"><i class="fa-solid fa-wrench me-1"></i>Workshop</div>
+                        <h4>Top Engineers – Data Science Workshop</h4>
+                        <div class="ach-org"><i class="fa-solid fa-building"></i>Top Engineers India (MIT – Anna University Alumni Start-Up)</div>
+                        <div class="ach-date"><i class="fa-regular fa-calendar"></i>February 12, 2023</div>
+                        <p class="ach-desc">
+                            Attended an intensive Data Science Workshop conducted by <strong>Top Engineers India</strong>
+                            at <strong>IIT Madras Research Park, Chennai</strong>. Gained hands-on knowledge in data science
+                            concepts, tools, and industry best practices from expert mentors. The program is
+                            ISO 9001:2015 certified and recognized nationally.
+                        </p>
+                        <div class="ach-detail">
+                            <strong>Venue:</strong> IIT Madras Research Park, Chennai<br>
+                            <strong>Certificate No:</strong> TOP 2023 &nbsp;|&nbsp; 1 3 9<br>
+                            <strong>Issued by:</strong> D.C. Jennifer (CEO) &amp; Dr. S. Prabhakar (COO), Top Engineers
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inter-Department Telugu Elocution – 2nd Place -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="ach-card">
+                        <div class="ach-icon-wrap"><i class="fa-solid fa-microphone"></i></div>
+                        <div class="ach-badge silver"><i class="fa-solid fa-2 me-1"></i>2nd Place</div>
+                        <h4>Telugu Elocution – Inter-Department 2nd Place</h4>
+                        <div class="ach-org"><i class="fa-solid fa-university"></i>R.M.K. College of Engineering and Technology</div>
+                        <div class="ach-date"><i class="fa-regular fa-calendar"></i>Annual Day 2023 – 2024</div>
+                        <p class="ach-desc">
+                            Won the <strong>Second Prize</strong> in the Telugu Elocution event held during the
+                            Annual Day 2024 at RMKCET. Demonstrated exceptional public speaking, stage presence,
+                            and communication skills in front of a large audience and a panel of judges.
+                        </p>
+                        <div class="ach-detail">
+                            <strong>Event:</strong> Telugu Elocution &nbsp;|&nbsp; <strong>Prize:</strong> Second Place<br>
+                            <strong>Year:</strong> II B.E. / B.Tech – CSE (CS)<br>
+                            <strong>Signed by:</strong> Dr. K. Ramar (Principal) &amp; Thiru R.S. Munirathinam (Chairman)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fade-in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.ach-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
